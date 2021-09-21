@@ -64,13 +64,31 @@ namespace Agenda
             }
         }
 
-        public static void Search(string searchName){
+        public static void SearchFirstName(string searchName){
 
             for(int i = 0; i < shedule.Length; i++){
 
                 if(shedule[i].FullName != null) {
                     string [] firstName = shedule[i].FullName.Split(' ');
-                    if(firstName[0].Contains(searchName)){
+                    if(firstName[0].Equals(searchName)){
+                        Console.WriteLine($"======={i}======");
+                        Console.WriteLine(shedule[i].FullName);
+                        Console.WriteLine($"contato {shedule[i].TypeContact}");
+                        Console.WriteLine($"telefone - {shedule[i].Phone}, email - {shedule[i].Email}");
+                        Console.WriteLine(DayForYourBirthday(i));
+                        Console.WriteLine("===============");
+                    }
+                }
+            }
+
+        }
+
+        public static void SearchFullName(string searchName){
+
+            for(int i = 0; i < shedule.Length; i++){
+
+                if(shedule[i].FullName != null) {
+                    if(shedule[i].Equals(searchName)){
                         Console.WriteLine($"======={i}======");
                         Console.WriteLine(shedule[i].FullName);
                         Console.WriteLine($"contato {shedule[i].TypeContact}");
@@ -167,13 +185,13 @@ namespace Agenda
                     case 2:
                         Console.WriteLine("Buscar por nome Completo");
                         string searchFullName = Console.ReadLine();
-                        Search(searchFullName);
+                        SearchFullName(searchFullName);
                         break;
 
                     case 3:
                         Console.WriteLine("Buscar por nome");
                         string searchName = Console.ReadLine();
-                        Search(searchName);
+                        SearchFirstName(searchName);
                         break;
 
                     case 4:
@@ -187,7 +205,7 @@ namespace Agenda
                     case 5:
                         Console.WriteLine("Buscar por Cidade");
                         string searchCity = Console.ReadLine();
-                        Search(searchCity);
+                        SearchCity(searchCity);
                         break;
 
                     case 6:
